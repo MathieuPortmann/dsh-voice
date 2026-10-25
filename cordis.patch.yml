@@ -1,0 +1,6 @@
+# dsh-voice bundle: local dictation (faster-whisper) and reading aloud (Piper).
+# The Python tools are installed once, see README.md. Removing the bundle removes all of it.
+- insert:
+    - id: voice
+      name: 'dsh-voice'
+      config: {}

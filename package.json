@@ -1,0 +1,70 @@
+{
+  "name": "dsh-voice",
+  "version": "0.1.0",
+  "description": "Local voice for DeepSeek Harness: a microphone button (click to talk, click to stop) puts the transcribed text (faster-whisper, French or English) into the message box, 'command <name>' becomes the matching /command, and a Read button speaks an answer with a local Piper voice. No wake word, no always-on microphone, nothing leaves the computer.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Mathieu Portmann",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathieuPortmann/dsh-voice.git"
+  },
+  "homepage": "https://github.com/MathieuPortmann/dsh-voice#readme",
+  "bugs": {
+    "url": "https://github.com/MathieuPortmann/dsh-voice/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "voice",
+    "dictation",
+    "speech-to-text",
+    "text-to-speech",
+    "whisper",
+    "piper",
+    "offline"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.2.0-rc.2 <0.3.0"
+  },
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\""
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib",
+    "worker",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": ">=3.18.0 <4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    },
+    "manifestVersion": 1
+  }
+}
